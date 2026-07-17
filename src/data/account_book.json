@@ -1,0 +1,22 @@
+[
+  {
+    "category": "INCOME",
+    "amount": 5000,
+    "note": "工资"
+  },
+  {
+    "category": "EXPENSE",
+    "amount": 120,
+    "note": "午饭"
+  },
+  {
+    "category": "EXPENSE",
+    "amount": 15.5,
+    "note": "咖啡"
+  },
+  {
+    "category": "INCOME",
+    "amount": 200,
+    "note": "红包"
+  }
+]
