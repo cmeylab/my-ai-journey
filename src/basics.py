@@ -14,7 +14,9 @@ else:
 for t in tags:
     print(f"标签: {t}")
 
+
 def add(a: int, b: int) -> int:
     return a + b
+
 
 print(add(3, 5))

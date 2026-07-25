@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+
 def greet(name: str, prefix: str = "你好") -> str:
     return f"{prefix}，{name}"
 

@@ -1,11 +1,14 @@
 from __future__ import annotations
-from enum import Enum
-from dataclasses import dataclass
+
 import json
 import logging
+from dataclasses import dataclass
+from enum import Enum
 from pathlib import Path
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", datefmt="%H:%M:%S")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", datefmt="%H:%M:%S"
+)
 logger = logging.getLogger(__name__)
 
 DATA_FILE = Path("data") / "account.json"
@@ -45,14 +48,18 @@ class AccountBook:
 
     def _save(self) -> None:
         DATA_FILE.parent.mkdir(exist_ok=True)
-        data = [{"category": r.category.name, "amount": r.amount, "note": r.note} for r in self.records]
+        data = [
+            {"category": r.category.name, "amount": r.amount, "note": r.note} for r in self.records
+        ]
         DATA_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
     def _load(self) -> None:
         if not DATA_FILE.exists():
             return
         for item in json.loads(DATA_FILE.read_text(encoding="utf-8")):
-            self.records.append(Record(Category[item["category"]], item["amount"], item.get("note", "")))
+            self.records.append(
+                Record(Category[item["category"]], item["amount"], item.get("note", ""))
+            )
 
     def __del__(self) -> None:
         self._save()

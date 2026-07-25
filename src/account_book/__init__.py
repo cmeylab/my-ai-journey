@@ -1,3 +1,4 @@
-from .models import Category,Record
 from .book import AccountBook
-__all__ = ["Category","Record","AccountBook"]
+from .models import Category, Record
+
+__all__ = ["AccountBook", "Category", "Record"]
