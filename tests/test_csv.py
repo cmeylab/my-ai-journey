@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from src.csv_cleaner import clean_csv
+from src.week2.csv_cleaner import clean_csv
 
 
 @pytest.fixture

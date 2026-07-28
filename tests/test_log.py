@@ -1,4 +1,4 @@
-from src.log_analyzer import tokenize, top_words
+from src.week2.log_analyzer import tokenize, top_words
 
 
 def test_tokenize_spiles_words() -> None:

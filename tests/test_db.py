@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from src.db_demo import insert, query_all, query_by_city
+from src.week2.db_demo import insert, query_all, query_by_city
 
 
 @pytest.fixture

@@ -1,4 +1,4 @@
-from src.weather import *
+from src.week2.weather import *
 
 
 def test_get_coords() -> None:

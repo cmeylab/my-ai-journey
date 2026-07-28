@@ -4,7 +4,7 @@ from pathlib import Path
 import pandas as pd
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
 
 
 def clean_csv(input_path: str | Path, output_path: str | Path) -> int:
