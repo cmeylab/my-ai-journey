@@ -1,3 +1,5 @@
+
+
 # my-ai-journey
 
 大二信安暑假 8 周：从零 Python 到 AI Agent
@@ -26,15 +28,30 @@
 | 6 | ruff / black / mypy 配置 | `pyproject.toml` |
 | 7 | GitHub 推送 + README | |
 
+## Week 3 — FastAPI + 异步
+
+| Day | 内容 | 文件 |
+|-----|------|------|
+| 1 | FastAPI + uvicorn 起步 | `src/fastapi_demo/hello_fastapi.py` |
+| 2 | async/await + asyncio.gather | `src/fastapi_demo/async_demo.py` |
+| 3 | pydantic-settings + .env | `src/fastapi_demo/settings.py` |
+| 4 | 天气 API 封装（httpx 异步） | `src/fastapi_demo/weather_api.py` |
+| 5 | CORS + POST 批量请求 | `src/fastapi_demo/cors_post.py` + `tests/test_cors_post.py` |
+| 6 | Postman 测试 | |
+| 7 | 复习 + README 更新 | |
+
 ## 运行
 
 ```bash
 pip install -r requirements.txt
 pytest tests/ -v
+
+# 启动 FastAPI 服务
+uvicorn src.fastapi_demo.cors_post:app --reload
 ```
 
 ## 工具链
-
+dili
 - Python 3.12+
 - ruff / black / mypy
 - pytest

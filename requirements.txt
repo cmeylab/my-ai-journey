@@ -1,6 +1,12 @@
 requests>=2.31
 pandas>=2.1
 pytest>=8
+pytest-asyncio>=1.4
 ruff>=0.6
 black>=24
 mypy>=1.11
+fastapi>=0.115
+uvicorn>=0.34
+httpx>=0.28
+pydantic>=2.10
+pydantic-settings>=2.7
