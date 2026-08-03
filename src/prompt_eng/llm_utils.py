@@ -4,8 +4,9 @@ from pydantic_settings import BaseSettings
 from tenacity import retry,stop_after_attempt,wait_exponential
 
 class Settings(BaseSettings):
-    api_key:str=""
-    model_config = {"env_file":".env"}
+    api_key: str = ""
+    debug: bool = False
+    model_config = {"env_file": ".env"}
 settings = Settings()
 client = OpenAI(api_key=settings.api_key,base_url="https://api.deepseek.com")
 
