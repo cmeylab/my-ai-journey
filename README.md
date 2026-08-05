@@ -40,6 +40,18 @@
 | 6 | Postman 测试 | |
 | 7 | 复习 + README 更新 | |
 
+## Week 4 — LLM API + Prompt 工程
+
+| Day | 内容 | 文件 |
+|-----|------|------|
+| 1 | Transformer 科普 + Token 概念 | |
+| 2 | DeepSeek API 第一个对话 | `src/prompt_eng/chat_v1.py` |
+| 3 | temperature / tenacity / 流式输出 | `src/prompt_eng/llm_utils.py` |
+| 4 | Zero-shot / Few-shot / CoT 对比 | `src/prompt_eng/prompt_compare.py` |
+| 5 | 结构化输出：杂乱文本 → JSON | `src/prompt_eng/info_extractor.py` |
+| 6 | 批量测试 10 条 + 准确率 | `src/prompt_eng/eval_report.py` |
+| 7 | 评测报告 + 面试话术 | `src/prompt_eng/eval_report.md` |
+
 ## 运行
 
 ```bash
