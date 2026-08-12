@@ -1,19 +1,33 @@
 import json
-import os
+import logging
+from pathlib import Path
 
 from openai import OpenAI
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from src.agent.schemas import build_prompt, TOOLS
 from src.agent.tool import call_tool
 
+_ENV_PATH = Path(__file__).resolve().parent.parent / ".env"
+
+
+class Settings(BaseSettings):
+    api_key: str
+    debug: bool = False
+
+    model_config = SettingsConfigDict(env_file=str(_ENV_PATH))
+
+
+settings = Settings()
+
 client = OpenAI(
     base_url="https://api.deepseek.com",
-    api_key=os.getenv("API_KEY"),
+    api_key=settings.api_key,
 )
 SYSTEM = build_prompt(TOOLS)
 MAX_TURN = 5
-
-
+logging.basicConfig(level=logging.INFO,format='%(asctime)s | %(name)s | %(levelname)s | %(message)s')
+logger = logging.getLogger(__name__)
 def ask_llm(messages: list) -> str:
     resp = client.chat.completions.create(
         model="deepseek-v4-flash",
@@ -58,7 +72,7 @@ def agent_run(question: str) -> str:
             result = call_tool(name, arg)
         except Exception as e:
             result = f"工具执行出错: {e}"
-        print(f"[调用] {name}{arg} -> {result}")
+        logger.info("tool_call name=%s args=%s result=%s",name,arg,result)
         messages.append({"role": "user", "content": f"工具结果: {result}"})
 
     return "达到最大轮数，未得出结果"
