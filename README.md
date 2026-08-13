@@ -52,6 +52,18 @@
 | 6 | 批量测试 10 条 + 准确率 | `src/prompt_eng/eval_report.py` |
 | 7 | 评测报告 + 面试话术 | `src/prompt_eng/eval_report.md` |
 
+## Week 5 — 手写 ReAct Agent（工具调用）
+
+| Day | 内容 | 文件 |
+|-----|------|------|
+| 1 | Agent 工具 Schema + system prompt 构建 | `src/agent/schemas.py` |
+| 2 | 工具实现：时间查询 / 安全计算器（ast） | `src/agent/tool.py` |
+| 3 | ReAct 主循环：思考→调用→观察 | `src/agent/agent_v1.py` |
+| 4 | 知识库基础：文档加载 + 文本切分 | `src/agent/doc_loader.py` + `src/agent/text_splitter.py` |
+| 5 | 字符袋向量 + SQLite 向量存储检索 | `src/agent/embedder.py` + `src/agent/db.py` |
+| 6 | 5 场景测试集验证 + structured logging | `tests/test_agent.py` |
+| 7 | 复习 + README 更新 | |
+
 ## 运行
 
 ```bash
@@ -63,7 +75,6 @@ uvicorn src.fastapi_demo.cors_post:app --reload
 ```
 
 ## 工具链
-dili
 - Python 3.12+
 - ruff / black / mypy
 - pytest
