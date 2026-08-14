@@ -2,6 +2,8 @@ import ast
 import operator
 from datetime import datetime
 
+from src.agent.schemas import validate_args
+
 OPS = {
     ast.Add: operator.add,
     ast.Sub: operator.sub,
@@ -41,4 +43,5 @@ FUNCTIONS = {
 def call_tool(name:str,arg:dict)->str:
     if name not in FUNCTIONS:
         return f"未知工具: {name}"
+    arg = validate_args(name, arg)
     return str(FUNCTIONS[name](**arg))
