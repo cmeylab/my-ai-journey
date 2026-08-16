@@ -1,7 +1,7 @@
 import ast
 import operator
 from datetime import datetime
-
+from pathlib import Path
 from src.agent.schemas import validate_args
 
 OPS = {
@@ -12,6 +12,7 @@ OPS = {
     ast.Mod: operator.mod,
 }
 
+DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
 def get_current_time()->str:
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 def _calc(node):
@@ -35,9 +36,25 @@ def _calc(node):
 def calculator(expression:str)->float:
     tree = ast.parse(expression,mode="eval")
     return _calc(tree)
+def search_local_docs(keyword:str,max_results:int = 5)->str:
+    hits= []
+    for f in DATA_DIR.rglob("*"):
+        if not f.is_file() or f.suffix in (".pyc",".db",".sqlite"):
+            continue
+        try:
+            text = f.read_text(encoding="utf-8",errors="ignore")
+        except OSError:
+            continue
+        if keyword in f.name or keyword in text:
+            hits.append(f"{f.relative_to(DATA_DIR)}")
+    if not hits:
+        return f"未找到包含 '{keyword}'的文件"
+    return "\n".join(hits[:max_results])
+
 FUNCTIONS = {
     "get_current_time":get_current_time,
     "calculator":calculator,
+    "search_local_docs":search_local_docs,
 }
 
 def call_tool(name:str,arg:dict)->str:
