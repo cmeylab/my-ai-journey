@@ -21,3 +21,15 @@ def search(collection,query:str,top_k:int=3):
         query_embeddings=[embed(query)],
         n_results=top_k,
     )
+def search_top_k(collection,query,top_k:int=3)->list[dict]:
+    result= search(collection,query,top_k=top_k)
+    hits=[]
+    for i ,cid in enumerate(result["ids"][0]):
+        hits.append(
+            {
+                "id":cid,
+                "text":result["documents"][0][i],
+                "distance":result["distances"][0][i],
+            }
+        )
+    return hits
