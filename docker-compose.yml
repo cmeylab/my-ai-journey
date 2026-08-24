@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./chroma_db:/app/chroma_db
+    environment:
+      - EMBED_BASE_URL=https://api.siliconflow.cn/v1
+      - EMBED_API_KEY=${SILICONFLOW_KEY}
+      - EMBED_MODEL=BAAI/bge-m3

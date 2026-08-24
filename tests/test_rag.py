@@ -13,7 +13,7 @@ def test_rag_answers_about_vacation(db_path):
     answer = rag_answer("年假有几天",top_k=1,db_path=db_path)
     assert "5" in answer
 def test_rag_no_hallucination(db_path):
-    answer = rag_answer("公式股票代码是什么"，top_k=1,db_path=db_path)
+    answer = rag_answer("公式股票代码是什么",top_k=1,db_path=db_path)
     assert ("未找到" in answer) or ("没有" in answer)
 
 def test_rag_top1_is_relevant_chunk(db_path):

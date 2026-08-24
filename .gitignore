@@ -5,3 +5,5 @@ __pycache__/
 .idea/
 data/
 .env
+chroma_db/
+*.db

@@ -21,6 +21,15 @@ TOOLS : list[ToolSchema] = [
             "required": ["expression"]
         }
     },
+    {
+        "name":"search_local_docs",
+        "description":"在本地数据目录按关键词搜索文件内容",
+        "parameters":{
+            "type":"object",
+            "properties":{"keyword":{"type":"string","description":"要搜索的关键词"}},
+            "required":["keyword"]
+        }
+    },
 ]
 def validate_args(name:str,arg:dict)->dict:
     for tool in TOOLS:
