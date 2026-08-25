@@ -10,4 +10,9 @@ jobs:
           python-version: "3.10"
       - run: pip install -r requirements.txt
       - run: ruff check src/agent src/rag src/main.py
-      - run: pytest tests/ -q --ignore=tests/test_rag.py
+      - run: pytest tests/ -v --tb=long --ignore=tests/test_rag.py 2>&1 | tee pytest.log; exit ${PIPESTATUS[0]}
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-log
+          path: pytest.log

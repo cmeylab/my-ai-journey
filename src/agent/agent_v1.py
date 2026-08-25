@@ -12,7 +12,7 @@ _ENV_PATH = Path(__file__).resolve().parent.parent / ".env"
 
 
 class Settings(BaseSettings):
-    api_key: str
+    api_key: str = ""
     debug: bool = False
 
     model_config = SettingsConfigDict(env_file=str(_ENV_PATH))
@@ -20,16 +20,24 @@ class Settings(BaseSettings):
 
 settings = Settings()
 
-client = OpenAI(
-    base_url="https://api.deepseek.com",
-    api_key=settings.api_key,
-)
+_client: OpenAI | None = None
+
+
+def _get_client() -> OpenAI:
+    global _client
+    if _client is None:
+        _client = OpenAI(
+            base_url="https://api.deepseek.com",
+            api_key=settings.api_key,
+        )
+    return _client
+
 SYSTEM = build_prompt(TOOLS)
 MAX_TURN = 5
 logging.basicConfig(level=logging.INFO,format='%(asctime)s | %(name)s | %(levelname)s | %(message)s')
 logger = logging.getLogger(__name__)
 def ask_llm(messages: list) -> str:
-    resp = client.chat.completions.create(
+    resp = _get_client().chat.completions.create(
         model="deepseek-v4-flash",
         messages=messages,
         temperature=0,
