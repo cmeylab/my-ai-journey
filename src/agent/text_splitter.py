@@ -1,5 +1,6 @@
 import re
 
+
 def split_by_chars(text:str,chunk_size:int=200,overlap:int=20)->list[str]:
     if chunk_size<=0:
         raise ValueError("chunk_size 必须大于0")

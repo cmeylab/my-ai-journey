@@ -3,7 +3,8 @@ from pathlib import Path
 
 from src.agent.doc_loader import load_text
 from src.agent.text_splitter import split_text
-from src.rag.vectordb import get_collection,add_chunks,search_top_k
+from src.rag.vectordb import add_chunks, get_collection, search_top_k
+
 
 def build_kb(files:list[str],chunk_size:int,method:str="sentences")->object:
     collection=get_collection(tempfile.mkdtemp())

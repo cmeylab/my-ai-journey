@@ -1,4 +1,6 @@
 from typing import TypedDict
+
+
 class ToolParam(TypedDict):
     type:str
     description:str

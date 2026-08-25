@@ -1,6 +1,8 @@
 from pathlib import Path
-from pypdf import PdfReader
+
 from docx import Document
+from pypdf import PdfReader
+
 
 def load_text(path:str)->str:
     p=Path(path)

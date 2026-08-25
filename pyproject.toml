@@ -2,6 +2,9 @@
 target-version = "py312"
 line-length = 100
 
+[tool.ruff.lint]
+ignore = ["BLE001", "DTZ005"]
+
 [tool.black]
 line-length = 100
 

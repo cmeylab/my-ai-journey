@@ -5,7 +5,7 @@ from pathlib import Path
 from openai import OpenAI
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from src.agent.schemas import build_prompt, TOOLS
+from src.agent.schemas import TOOLS, build_prompt
 from src.agent.tool import call_tool
 
 _ENV_PATH = Path(__file__).resolve().parent.parent / ".env"

@@ -1,4 +1,5 @@
 import chromadb
+
 from src.agent.embedder import embed
 
 COLLECTION  = "docs"

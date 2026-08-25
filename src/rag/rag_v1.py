@@ -1,6 +1,7 @@
 from src.agent.agent_v1 import *
 from src.rag.vectordb import *
 
+
 def build_context(hits:list[dict])->str:
     return "\n\n".join(f"[{h['id']}] {h['text']}" for h in hits)
 
