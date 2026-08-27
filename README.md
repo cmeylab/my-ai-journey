@@ -157,7 +157,7 @@ docker compose up -d --build
 # 访问 http://localhost:8000/qa?question=你的问题
 ```
 
-容器通过环境变量注入 API Key（建议配合 `.env` 或 `SILICONFLOW_KEY`）。
+容器通过环境变量注入 API Key：在 `.env` 中写 `API_KEY=你的key`，docker compose 会自动读取并注入容器。
 
 ## CI/CD
 
@@ -167,10 +167,6 @@ docker compose up -d --build
 3. `pytest` 运行测试（忽略需要真实 API Key 的 `test_rag.py`）
 
 点击顶部徽章可查看实时状态。
-
-## 面试准备
-
-见 [`INTERVIEW.md`](./INTERVIEW.md)：3 个项目故事（Agent / RAG / Prompt 工程）+ 手写 Agent 伪代码 + 模拟面试要点。
 
 ## 备注
 

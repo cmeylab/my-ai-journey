@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+.idea/
+.git/
+.env
+chroma_db/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+ngrok.log
+data/
+*.db
